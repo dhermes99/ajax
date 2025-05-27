@@ -16,7 +16,7 @@
 $(document).ready(function () {
   $("#btn-buscar-cep").click(function () {
     const cep = $("#cep").val();
-    const endpoint = `https://viacep.com.br/ws/${cep}/json/resultado`;
+    const endpoint = `https://viacep.com.br/ws/${cep}/json`;
 
     //     $.ajax(endpoint).done(function (resposta) {
     //       const logradouro = resposta.logradouro;
@@ -39,6 +39,9 @@ $(document).ready(function () {
         const estado = json.uf;
         const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
         $("#endereco").val(endereco);
+      })
+      .catch(function (erro) {
+        alert("Ocorreu um erro ao buscar o endereço");
       });
   });
 });
